@@ -1,0 +1,23 @@
+name: canary-trap
+version: "0.1.0"
+description: >-
+  Catch prompt injection by the secret it tries to steal. Every turn the agent sees a decoy
+  credential it must never send; if it shows up in a tool call (plain, URL-encoded, base64, hex,
+  reversed, spaced out or half-copied) the call is blocked, the session switches to approval for
+  every tool call, and the reply opens with an alert. Stores no conversation content.
+author: Tarekkharsa
+license: Apache-2.0
+requires_hermes: ">=0.22.0"
+provides_hooks:
+  - pre_llm_call
+  - pre_tool_call
+  - transform_llm_output
+config_schema:
+  enabled:
+    type: bool
+    default: true
+    description: "Inject the decoy and scan tool calls."
+  lockdown:
+    type: bool
+    default: true
+    description: "After a trip, every later tool call in that session needs your approval until /canary reset."
