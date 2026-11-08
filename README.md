@@ -47,7 +47,7 @@ checks plain URLs, base64 and hex blobs, and long text stay clean.
 hermes plugins install canary-trap --enable
 ```
 
-Before the catalog entry is merged:
+Or straight from this repo:
 
 ```bash
 git clone https://github.com/Tarekkharsa/hermes-canary-trap && cp -R hermes-canary-trap/canary-trap ~/.hermes/plugins/canary-trap
